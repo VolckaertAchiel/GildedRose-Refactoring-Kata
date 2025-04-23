@@ -1,3 +1,8 @@
+# 🧙‍♂️ Gilded Rose Kata (TypeScript)
+
+Take a look in the `Typescript` folder for my attempt at the Gilded Rose Kata in TypeScript. It includes business rules for a fictional shop that sells items with varying behaviors.
+
+---
 _Support this and all my katas via [Patreon](https://www.patreon.com/EmilyBache)_
 
 # Gilded Rose Refactoring Kata

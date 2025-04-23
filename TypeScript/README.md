@@ -1,57 +1,92 @@
-# Gilded Rose
 
-This is the Gilded Rose kata in TypeScript.
+# 🧙‍♂️ Gilded Rose Kata (TypeScript)
 
-## Getting started
+This is a TypeScript implementation of the classic [Gilded Rose kata](https://github.com/emilybache/GildedRose-Refactoring-Kata). It includes business rules for a fictional shop that sells items with varying behaviors.
 
-Install dependencies
+## 📁 Project Structure
 
-```sh
+```
+├── app/                 # Application source code
+├── test/                # Jest and Mocha unit tests
+├── ...
+```
+
+## 🚀 Getting Started
+
+### 📦 Install dependencies
+
+```bash
 npm install
 ```
 
-## Run the unit tests from the Command-Line
+---
 
-There are two unit test frameworks to choose from, Jest and Mocha.
+## ✅ Running Tests
 
-```sh
+### Jest
+
+Run tests once:
+
+```bash
 npm run test:jest
 ```
 
-To run all tests in watch mode
+Run tests in watch mode:
 
-```sh
+```bash
 npm run test:jest:watch
 ```
+---
 
-Mocha
+## 🧪 TextTest Fixture
 
-```sh
-npm run test:mocha
+You can run a "Golden Master" style test to compare outputs.
+
+### Prerequisite
+
+You may need to install `ts-node` globally:
+
+```bash
+npm install -g ts-node
 ```
 
+### Run the TextTest script
 
-## Run the TextTest fixture from the Command-Line
+Run for the default number of days:
 
-_You may need to install `ts-node`_
-
-```sh
+```bash
 npx ts-node test/golden-master-text-test.ts
 ```
 
-Or with number of days as args:
-```sh
+Or with a custom number of days:
+
+```bash
 npx ts-node test/golden-master-text-test.ts 10
 ```
 
-You should make sure the command shown above works when you execute it in a terminal before trying to use TextTest (see below).
+Make sure this works in your terminal before proceeding with full TextTest integration.
 
+---
 
-## Run the TextTest approval test that comes with this project
+## 📜 Features Covered
 
-There are instructions in the [TextTest Readme](../texttests/README.md) for setting up TextTest. You will need to specify the Python executable and interpreter in [config.gr](../texttests/config.gr). Uncomment these lines:
+- Regular items
+- Aged Brie
+- Sulfuras (legendary)
+- Backstage passes
+- Conjured items (degrade in quality twice as fast)
 
-    executable:${TEXTTEST_HOME}/python/texttest_fixture.py
-    interpreter:python
+---
 
+## 🧠 Kata Goals
 
+This project is intended as a **refactoring and testing exercise**. You are encouraged to:
+- Practice test-driven development (TDD)
+- Improve code quality and structure
+- Explore object-oriented vs procedural styles
+
+---
+
+## 💬 License
+
+This project is open source and free to use for learning and practicing.
