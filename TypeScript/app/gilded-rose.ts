@@ -24,10 +24,8 @@ export class GildedRose {
           if (item.quality < 50) {
             item.quality += 1;
           }
-
           item.sellIn = item.sellIn - 1;
           if (item.sellIn < 0) {
-
             if (item.quality < 50) {
               item.quality += 1;
             }
@@ -49,11 +47,9 @@ export class GildedRose {
           }
 
           item.sellIn = item.sellIn - 1;
-          if (item.sellIn < 0) {
-
-            if (item.sellIn <= 0) {
+            if (item.sellIn < 0) {
               item.quality = 0;
-            }
+            
           }
 
           break;
@@ -66,18 +62,13 @@ export class GildedRose {
           if (item.quality > 0) {
             item.quality -= 1;
           }
-          break;
-      }
-
-
-
-      if (item.name != 'Sulfuras, Hand of Ragnaros' && item.name != 'Aged Brie' && item.name != 'Backstage passes to a TAFKAL80ETC concert') {
-        item.sellIn = item.sellIn - 1;
-        if (item.sellIn < 0) {
-          if (item.quality > 0) {
-            item.quality -= 1;
+          item.sellIn = item.sellIn - 1;
+          if (item.sellIn < 0) {
+            if (item.quality > 0) {
+              item.quality -= 1;
+            }
           }
-        }
+          break;
       }
     }
 
