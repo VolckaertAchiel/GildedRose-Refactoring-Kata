@@ -20,44 +20,35 @@ export class GildedRose {
   updateQuality() {
     for (const item of this.items) {
       if (item.name != 'Sulfuras, Hand of Ragnaros') {
+        // Decrease sellIn for all items except "Sulfuras, Hand of Ragnaros" since it never has to be sold or decreases in Quality
         decreaseSellIn(item);
       }
-
       switch (item.name) {
         case 'Aged Brie':
-          if (item.quality < 50) {
+          increaseQuality(item);
+          if (item.sellIn < 0) {
             increaseQuality(item);
-            if (item.sellIn < 0 && item.quality < 50) {
-              increaseQuality(item);
-            }
           }
           break;
-
         case 'Backstage passes to a TAFKAL80ETC concert':
           if (item.sellIn < 0) {
             item.quality = 0;
           } else {
-            if (item.quality < 50) increaseQuality(item);
-            if (item.sellIn < 10 && item.quality < 50) increaseQuality(item);
-            if (item.sellIn < 5 && item.quality < 50) increaseQuality(item);
+            increaseQuality(item);
+            if (item.sellIn < 10) increaseQuality(item);
+            if (item.sellIn < 5) increaseQuality(item);
           }
           break;
-
-        case 'Sulfuras, Hand of Ragnaros':
-          // Legendary item, quality does not change
-          break;
-
         default:
-          if (item.quality > 0) {
+          if (item.name !== 'Sulfuras, Hand of Ragnaros') { //not moving this to the helper to keep helpers reusable
             decreaseQuality(item)
-            if (item.sellIn < 0 && item.quality > 0) {
+            if (item.sellIn < 0) {
               decreaseQuality(item)
             }
           }
           break;
       }
     }
-
     return this.items;
   }
 }
@@ -67,9 +58,13 @@ const decreaseSellIn = (item: Item) => {
 };
 
 const decreaseQuality = (item: Item) => {
-  item.quality--
+  if (item.quality > 0) {
+    item.quality--
+  };
 };
 
 const increaseQuality = (item: Item) => {
-  item.quality++
+  if (item.quality < 50) {
+    item.quality++
+  }
 }
