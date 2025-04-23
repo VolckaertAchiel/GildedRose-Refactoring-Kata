@@ -19,37 +19,28 @@ export class GildedRose {
 
   updateQuality() {
     for (const item of this.items) {
+      if (item.name != 'Sulfuras, Hand of Ragnaros') {
+        decreaseSellIn(item);
+      }
+
       switch (item.name) {
         case 'Aged Brie':
-          item.sellIn --;
           if (item.quality < 50) {
-            item.quality ++;
+            increaseQuality(item);
             if (item.sellIn < 0 && item.quality < 50) {
-              item.quality ++;
+              increaseQuality(item);
             }
           }
           break;
 
         case 'Backstage passes to a TAFKAL80ETC concert':
-          if (item.quality < 50) {
-            item.quality += 1;
-            if (item.sellIn < 11) {
-              item.quality += 1;
-            }
-            if (item.sellIn < 6) {
-              item.quality += 1;
-            }
-            if (item.quality > 50) {
-              item.quality = 50;
-            }
+          if (item.sellIn < 0) {
+            item.quality = 0;
+          } else {
+            if (item.quality < 50) increaseQuality(item);
+            if (item.sellIn < 10 && item.quality < 50) increaseQuality(item);
+            if (item.sellIn < 5 && item.quality < 50) increaseQuality(item);
           }
-
-          item.sellIn = item.sellIn - 1;
-            if (item.sellIn < 0) {
-              item.quality = 0;
-            
-          }
-
           break;
 
         case 'Sulfuras, Hand of Ragnaros':
@@ -58,12 +49,9 @@ export class GildedRose {
 
         default:
           if (item.quality > 0) {
-            item.quality -= 1;
-          }
-          item.sellIn = item.sellIn - 1;
-          if (item.sellIn < 0) {
-            if (item.quality > 0) {
-              item.quality -= 1;
+            decreaseQuality(item)
+            if (item.sellIn < 0 && item.quality > 0) {
+              decreaseQuality(item)
             }
           }
           break;
@@ -72,4 +60,16 @@ export class GildedRose {
 
     return this.items;
   }
+}
+
+const decreaseSellIn = (item: Item) => {
+  item.sellIn--
+};
+
+const decreaseQuality = (item: Item) => {
+  item.quality--
+};
+
+const increaseQuality = (item: Item) => {
+  item.quality++
 }
