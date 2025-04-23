@@ -39,6 +39,10 @@ export class GildedRose {
               item.quality = 50;
             }
           }
+
+          if (item.sellIn <= 0) {
+            item.quality = 0;
+          }
           break;
 
         case 'Sulfuras, Hand of Ragnaros':
@@ -67,7 +71,7 @@ export class GildedRose {
             break;
 
           case 'Backstage passes to a TAFKAL80ETC concert':
-            item.quality = 0;
+            //logic already handled above
             break;
 
           case 'Sulfuras, Hand of Ragnaros':
