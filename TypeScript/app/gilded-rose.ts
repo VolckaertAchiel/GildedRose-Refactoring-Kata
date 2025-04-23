@@ -73,5 +73,7 @@ const decreaseQuality = (item: Item) => {
 const increaseQuality = (item: Item) => {
   if (item.quality < 50) {
     item.quality++
+  } else {
+    item.quality = 50
   }
 }
