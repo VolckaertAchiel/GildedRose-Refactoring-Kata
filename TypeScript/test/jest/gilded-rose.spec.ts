@@ -105,7 +105,7 @@ describe('Gilded Rose', () => {
   });
 
   // Conjured Mana Cake
-  describe.skip('Conjured Mana Cake', () => {
+  describe('Conjured Mana Cake', () => {
     it('should degrade in quality twice as fast as normal items', () => {
       const gildedRose = new GildedRose([new Item('Conjured Mana Cake', 10, 20)]);
       const items = gildedRose.updateQuality();

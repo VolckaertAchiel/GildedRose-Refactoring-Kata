@@ -39,13 +39,14 @@ export class GildedRose {
             if (item.sellIn < 5) increaseQuality(item);
           }
           break;
-        // case 'Conjured Mana Cake':
-        //   decreaseQuality(item);
-        //   decreaseQuality(item);
-        //   if (item.sellIn < 0) {
-        //     decreaseQuality(item);
-        //   }
-        //   break;
+        case 'Conjured Mana Cake':
+          decreaseQuality(item);
+          decreaseQuality(item);
+          if (item.sellIn < 0) {
+            decreaseQuality(item);
+            decreaseQuality(item);
+          }
+          break;
         default:
           if (item.name !== 'Sulfuras, Hand of Ragnaros') { //not moving this to the helper to keep helpers reusable
             decreaseQuality(item)
@@ -73,7 +74,5 @@ const decreaseQuality = (item: Item) => {
 const increaseQuality = (item: Item) => {
   if (item.quality < 50) {
     item.quality++
-  } else {
-    item.quality = 50
   }
 }
